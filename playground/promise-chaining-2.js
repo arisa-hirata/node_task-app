@@ -11,8 +11,8 @@ const Task = require('../src/models/task');
 //     console.log(e);
 // });
 
-const deleteTaskAndCount = async (id, completed) => {
-    const task = await Task.findByIdAndDelete(id, { completed: false });
+const deleteTaskAndCount = async (id) => {
+    const task = await Task.findByIdAndDelete(id);
     const conut = await Task.countDocuments({ completed: false });
     return conut;
 };
