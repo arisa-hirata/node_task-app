@@ -23,12 +23,21 @@ app.use(express.json());
 app.use(userRouter);
 app.use(taskRouter);
 
-//
-// Without middleware: new request => run route handler
-//
-// With middleware:    new request => do something => run route handler
-//
-
 app.listen(port, () => {
     console.log(`Searver is up on port ${port}`);
 });
+
+const Task = require('./models/task');
+const User = require('./models/user');
+
+const main = async () => {
+    // const task = await Task.findById('600ddb7366a6746126e76b83');
+    // await task.populate('owner').execPopulate()
+    // console.log(task.owner);
+
+    const user = await User.findById('600cfe84d595ff509e806f7e');
+    await user.populate('tasks').execPopulate();
+    console.log(user.tasks);
+}
+
+main();
