@@ -97,7 +97,11 @@ const upload = multer({
 
 router.post('/users/me/avator', upload.single('avator'), async (req, res) => {
         res.send();
+}, (error, req, res, next) => {
+        res.status(400).send({error: error.message})
 });
+
+
 
 
 
