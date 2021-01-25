@@ -47,7 +47,10 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    avator: {
+        type: Buffer
+    }
 }, {
     timestamps: true,
 });
